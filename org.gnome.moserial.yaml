@@ -1,8 +1,9 @@
 id: org.gnome.moserial
 runtime: org.gnome.Platform
-runtime-version: '44'
+runtime-version: '48'
 sdk: org.gnome.Sdk
 command: moserial
+rename-appdata-file: moserial.appdata.xml
 finish-args:
   # moserial requires access to serial devices connected to the host.
   - --device=all
@@ -17,13 +18,41 @@ cleanup:
 modules:
   - shared-modules/intltool/intltool-0.51.json
   - name: lrzsz
-    buildsystem: autotools
-    config-opts:
-      - --program-transform-name=s/l//
+    buildsystem: simple
+    build-commands:
+      - '>> config.rpath'
+      - 'rm missing'
+      - 'rm acconfig.h'
+      - 'autoreconf -vfi'
+      - "./configure --prefix=/app --program-transform-name=s/l//"
+      - "make"
+      - "make install"
     sources:
       - type: archive
         url: https://www.ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz
         sha256: c28b36b14bddb014d9e9c97c52459852f97bd405f89113f30bee45ed92728ff1
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-autotools.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-implicit-decl.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-0.12.20-automake-1.12.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-0.12.20-automake-1.13.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-0.12.20-gettext-0.20.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-0.12.20-AR.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-0.12.20-gettext-0.22.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-0.12.20-disable-nls.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-0.12.20-c99.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-0.12.20-fix-integer-overflow.patch
+      - type: patch
+        path: ./lrzsz-patches/lrzsz-0.12.20-c23.patch
     cleanup:
       - /share/man
       - /man
@@ -37,9 +66,13 @@ modules:
           type: gnome
           name: moserial
           stable-only: true
+      - type: patch
+        path: ./moserial-patches/fix-incompatible-pointer-types.diff
+      - type: patch
+        path: ./moserial-patches/fix-vala-syntax-errors.diff
+      - type: patch
+        path: ./moserial-patches/fixes-appstream-compose-failures.patch
     post-install:
-      - install -Dm644 -T /app/share/applications/moserial.desktop /app/share/applications/org.gnome.moserial.desktop
-      - sed -i 's/Icon=moserial/Icon=org.gnome.moserial/' /app/share/applications/org.gnome.moserial.desktop
-      - install -Dm644 -T /app/share/icons/hicolor/scalable/apps/moserial.svg /app/share/icons/hicolor/scalable/apps/org.gnome.moserial.svg
-      - install -Dm644 -T /app/share/metainfo/moserial.appdata.xml /app/share/metainfo/org.gnome.moserial.appdata.xml
-      - sed -i 's/moserial.desktop/org.gnome.moserial.desktop/' /app/share/metainfo/org.gnome.moserial.appdata.xml
+      - install -Dm644 -T /app/share/applications/moserial.desktop "/app/share/applications/${FLATPAK_ID}.desktop"
+      - desktop-file-edit --set-key="Icon" --set-value="${FLATPAK_ID}" "/app/share/applications/${FLATPAK_ID}.desktop"
+      - install -Dm644 -T /app/share/icons/hicolor/scalable/apps/moserial.svg "/app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg"
