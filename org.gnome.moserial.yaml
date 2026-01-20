@@ -1,6 +1,6 @@
 id: org.gnome.moserial
 runtime: org.gnome.Platform
-runtime-version: '48'
+runtime-version: '49'
 sdk: org.gnome.Sdk
 command: moserial
 rename-appdata-file: moserial.appdata.xml
@@ -23,7 +23,7 @@ modules:
       - '>> config.rpath'
       - 'rm missing'
       - 'rm acconfig.h'
-      - 'autoreconf -vfi'
+      - 'export ACLOCAL_PATH="/usr/share/gettext/m4/:/usr/share/aclocal/"; autoreconf -vfi'
       - "./configure --prefix=/app --program-transform-name=s/l//"
       - "make"
       - "make install"
