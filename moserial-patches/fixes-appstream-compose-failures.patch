@@ -1,3 +1,4 @@
+diff -u -r moserial-3.0.21/data/moserial.appdata.xml moserial-3.0.21-patched/data/moserial.appdata.xml
 --- moserial-3.0.21/data/moserial.appdata.xml
 +++ moserial-3.0.21/data/moserial.appdata.xml
 @@ -1,6 +1,6 @@
@@ -8,34 +9,41 @@
    <metadata_license>CC0-1.0</metadata_license>
    <project_license>GPL-3.0+</project_license>
    <name>moserial</name>
-@@ -83,12 +83,17 @@
+@@ -83,13 +83,19 @@
      <p xml:lang="zh_CN">Moserial 是一个用于与串行控制台和嵌入式设备交互的串行终端。它支持以 ASCII 或十六进制格式显示数据传入和数据传出, 并可以选择记录这些数据到日志。它还支持发送和接收 x, y, z-modem 文件, 并且您可以设置配置文件, 这样您可以轻松地在不同的设备之间切换。</p>
    </description>
    <project_group>GNOME</project_group>
+-  <url type="homepage">https://wiki.gnome.org/moserial/</url>
+-  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=moserial</url>
+-  <url type="donation">http://www.gnome.org/friends/</url>
+-  <url type="help">https://help.gnome.org/users/moserial/stable/</url>
 +  <launchable type="desktop-id">org.gnome.moserial.desktop</launchable>
 +  <developer id="org.gnome">
 +    <name>The GNOME Project</name>
 +  </developer>
-   <url type="homepage">https://wiki.gnome.org/moserial/</url>
-   <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=moserial</url>
-   <url type="donation">http://www.gnome.org/friends/</url>
-   <url type="help">https://help.gnome.org/users/moserial/stable/</url>
++  <url type="homepage">https://wiki.gnome.org/Apps/Moserial</url>
++  <url type="bugtracker">https://gitlab.gnome.org/GNOME/moserial/-/issues</url>
++  <url type="vcs-browser">https://gitlab.gnome.org/GNOME/moserial/</url>
++  <url type="donation">https://donate.gnome.org</url>
++  <url type="help">https://wiki.gnome.org/Apps/Moserial</url>
    <screenshots>
      <screenshot type="default">
-+      <caption>Main window</caption>
 -      <image>https://wiki.gnome.org/Apps/Moserial?action=AttachFile&amp;do=get&amp;target=main.png</image>
++      <caption>Main window</caption>
 +      <image>https://wiki.gnome.org/attachments/Apps(2f)Moserial/main.png</image>
      </screenshot>
    </screenshots>
-@@ -147,4 +152,4 @@
+   <translation type="gettext">moserial</translation>
+@@ -147,4 +153,4 @@
        </description>
      </release>
    </releases>
 -</component>
 \ No newline at end of file
 +</component>
---- moserial-3.0.21/data/moserial.appdata.xml.in
-+++ moserial-3.0.21/data/moserial.appdata.xml.in
+diff -u -r moserial-3.0.21/data/moserial.appdata.xml.in moserial-3.0.21-patched/data/moserial.appdata.xml.in
+--- moserial-3.0.21/data/moserial.appdata.xml.in	2021-11-26 20:25:09.000000000 +0100
++++ moserial-3.0.21-patched/data/moserial.appdata.xml.in	2026-01-22 13:14:45.112299474 +0100
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="UTF-8"?>
  <!-- Copyright 2014 Ryan Lerch <rlerch@redhat.com> -->
@@ -45,22 +53,28 @@
    <metadata_license>CC0-1.0</metadata_license>
    <project_license>GPL-3.0+</project_license>
    <_name>moserial</_name>
-@@ -18,12 +18,17 @@
+@@ -18,13 +18,19 @@
      </_p>
    </description>
    <project_group>GNOME</project_group>
+-  <url type="homepage">https://wiki.gnome.org/moserial/</url>
+-  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=moserial</url>
+-  <url type="donation">http://www.gnome.org/friends/</url>
+-  <url type="help">https://help.gnome.org/users/moserial/stable/</url>
 +  <launchable type="desktop-id">org.gnome.moserial.desktop</launchable>
 +  <developer id="org.gnome">
 +    <name>The GNOME Project</name>
 +  </developer>
-   <url type="homepage">https://wiki.gnome.org/moserial/</url>
-   <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=moserial</url>
-   <url type="donation">http://www.gnome.org/friends/</url>
-   <url type="help">https://help.gnome.org/users/moserial/stable/</url>
++  <url type="homepage">https://wiki.gnome.org/Apps/Moserial</url>
++  <url type="bugtracker">https://gitlab.gnome.org/GNOME/moserial/-/issues</url>
++  <url type="vcs-browser">https://gitlab.gnome.org/GNOME/moserial/</url>
++  <url type="donation">https://donate.gnome.org</url>
++  <url type="help">https://wiki.gnome.org/Apps/Moserial</url>
    <screenshots>
      <screenshot type="default">
-+      <caption>Main window</caption>
 -      <image>https://wiki.gnome.org/Apps/Moserial?action=AttachFile&amp;do=get&amp;target=main.png</image>
++      <caption>Main window</caption>
 +      <image>https://wiki.gnome.org/attachments/Apps(2f)Moserial/main.png</image>
      </screenshot>
    </screenshots>
+   <translation type="gettext">moserial</translation>
